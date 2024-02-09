@@ -12,28 +12,6 @@
       <link href="css/theme.css" rel="stylesheet">
       <link href="css/blueimp-gallery.min.css" rel="stylesheet" >
       <link href="css/blueimp-gallery-video.css" rel="stylesheet" >
-               /* Hashtag Filters Styling */
-            .filters {
-                margin-bottom: 20px;
-                padding: 10px;
-                border: 1px solid #ddd; /* Light grey border */
-                background-color: #f9f9f9; /* Light grey background */
-                border-radius: 5px; /* Rounded corners */
-                display: inline-block;
-            }
-            
-            .filters .btn {
-                margin: 5px;
-                color: #333; /* Dark text color for contrast */
-                background-color: #fff; /* White background */
-                border-color: #ccc; /* Light grey border */
-            }
-            
-            .filters .btn:hover, .filters .btn:focus {
-                color: #fff; /* White text on hover/focus */
-                background-color: #007bff; /* Bootstrap primary color */
-                border-color: #007bff;
-            }
    </head>
    <body>
       <div class="container">
@@ -262,33 +240,32 @@
               options = {index: link, event: event},
               links = this.getElementsByTagName('a');
           blueimp.Gallery(links, options);
-         };        
-      </script> 
-      <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             // Handle filter button clicks
-             var filters = document.querySelectorAll('.filter');
-             filters.forEach(function(filter) {
-                 filter.addEventListener('click', function() {
-                     var filterValue = this.getAttribute('data-filter');
-                     // Get all gallery items
-                     var items = document.querySelectorAll('.thumbnails li');
-                     items.forEach(function(item) {
-                         if (filterValue === 'all') {
-                             item.style.display = '';
-                         } else {
-                             // Check if the item has the filter class
-                             if (item.classList.contains(filterValue)) {
-                                 item.style.display = '';
-                             } else {
-                                 item.style.display = 'none';
-                             }
-                         }
-                     });
-                 });
-             });
-         });
-         </script>
+         };       
 
+               document.addEventListener('DOMContentLoaded', function() {
+          // Handle filter button clicks
+          var filters = document.querySelectorAll('.filter');
+          filters.forEach(function(filter) {
+              filter.addEventListener('click', function() {
+                  var filterValue = this.getAttribute('data-filter');
+                  // Get all gallery items
+                  var items = document.querySelectorAll('.thumbnails li');
+                  items.forEach(function(item) {
+                      if (filterValue === 'all') {
+                          item.style.display = '';
+                      } else {
+                          // Check if the item has the filter class
+                          if (item.classList.contains(filterValue)) {
+                              item.style.display = '';
+                          } else {
+                              item.style.display = 'none';
+                          }
+                      }
+                  });
+              });
+          });
+      });
+         
+      </script> 
    </body>
 </html>
