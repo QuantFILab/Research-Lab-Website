@@ -19,6 +19,13 @@
             <p class="lead"> Velit Aliquet Sagittis University </p>
             <h1>Experimental Research Lab</h1>
          </header>
+                <div class="filters">
+                <button class="filter" data-filter="all">All</button>
+                <button class="filter" data-filter="science">Science</button>
+                <button class="filter" data-filter="robotics">Robotics</button>
+                <button class="filter" data-filter="biology">Biology</button>
+                <!-- Add more filters as needed -->
+               </div>
          <div class="masthead">
             <div class="navbar">
                <div class="navbar-inner">
@@ -235,6 +242,32 @@
               links = this.getElementsByTagName('a');
           blueimp.Gallery(links, options);
          };        
-      </script>  
+      </script> 
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // Handle filter button clicks
+             var filters = document.querySelectorAll('.filter');
+             filters.forEach(function(filter) {
+                 filter.addEventListener('click', function() {
+                     var filterValue = this.getAttribute('data-filter');
+                     // Get all gallery items
+                     var items = document.querySelectorAll('.thumbnails li');
+                     items.forEach(function(item) {
+                         if (filterValue === 'all') {
+                             item.style.display = '';
+                         } else {
+                             // Check if the item has the filter class
+                             if (item.classList.contains(filterValue)) {
+                                 item.style.display = '';
+                             } else {
+                                 item.style.display = 'none';
+                             }
+                         }
+                     });
+                 });
+             });
+         });
+         </script>
+
    </body>
 </html>
